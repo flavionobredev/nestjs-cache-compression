@@ -21,7 +21,7 @@ curl -i -X GET http://localhost:3000/api/world-cup/results
 ## Benchmark
 
 ```bash
-# results for console.log in compression
+# 100 items: results for console.log in compression
 before compression length 9401
 after compression length 210
 ```
