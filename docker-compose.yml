@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    entrypoint: sh -c "npm install && npm run start:dev"
+    volumes:
+      - ./:/usr/cache-module-app/app
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      NODE_ENV: development
+      REDIS_URI: redis://redis:6379
+    depends_on:
+      - redis
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+  redisinsight:
+    image: redislabs/redisinsight
+    ports:
+      - 8001:8001
